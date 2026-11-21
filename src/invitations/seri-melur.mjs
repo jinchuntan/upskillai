@@ -42,6 +42,8 @@ const metaHost=process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_U
 const host=metaHost && /^[a-z0-9.-]+$/i.test(metaHost) ? 'https://'+metaHost : '';
 const permalink = '/jemputan/seri-melur/';
 const datesAndPlace = `${day}, ${date} · ${wedding.town}`;
+const coverNames = wedding.couples.map(couple => `<span>${couple.short.join(' <em>&amp;</em> ')}</span>`).join('<small>serta</small>');
+const petals = '<span class="petals" aria-hidden="true">' + '<i></i>'.repeat(7) + '</span>';
 const controls = '<a href="#jemputan">Jemputan</a><a href="#butiran">Butiran majlis</a><a href="#kehadiran">Kehadiran</a>';
 const out = new URL('../../dist/jemputan/seri-melur/',import.meta.url);
 export async function buildSeriMelur() {
@@ -60,14 +62,31 @@ export async function buildSeriMelur() {
 <meta property="og:image" content="${host}${permalink}gerbang.webp">${host?`<meta property="og:url" content="${host}${permalink}">`:''}
 <link rel="icon" href="../../assets/flower.svg"><link rel="stylesheet" href="card.css"><link rel="preload" as="font" crossorigin href="../../assets/serif.woff" type="font/woff"><script src="card.js" defer></script></head>
 <body id="atas"><a class="skip" href="#jemputan">Terus ke jemputan</a>
+<dialog class="opening" id="opening" aria-label="Sampul jemputan Seri Melur" aria-describedby="opening-description">
+  <p id="opening-description" hidden>${summary}. ${datesAndPlace}.</p>
+  <div class="opening-mat">
+    <button type="button" class="opening-skip">Langkau <span aria-hidden="true">↗</span></button>
+    <div class="opening-stationery">
+      <p class="opening-title">${blossom}<span>Seri Melur</span></p>
+      <button class="folded-card" type="button" aria-label="Buka kad jemputan Seri Melur" autofocus>
+        <span class="leaf leaf-left" aria-hidden="true"><span class="leaf-print"></span></span>
+        <span class="leaf leaf-right" aria-hidden="true"><span class="leaf-print"></span></span>
+        <span class="card-caption" aria-hidden="true">Walimatulurus</span>
+        <span class="fastening" aria-hidden="true"><span class="wax"><span>${blossom}</span></span><span class="seal-label">Buka kad</span></span>
+        <span class="cover-lettering" aria-hidden="true">${coverNames}</span>
+      </button>
+      <p class="opening-dateline"><span>${date}</span><i aria-hidden="true"></i><span>${wedding.town}</span></p>
+    </div>
+  </div>
+</dialog>
 <header class="mast"><div class="mast-in"><a href="#atas" class="brand">${blossom}<span>Seri Melur</span></a><nav aria-label="Menu jemputan">${controls}</nav><div class="mast-end"><span class="demo">Contoh e-kad</span><details class="share"><summary>${lineIcon('share')}Kongsi</summary><div class="share-box"><p>Kongsi kad contoh ini</p><a id="whatsapp" href="https://wa.me/?text=${encodeURIComponent('Contoh e-kad Seri Melur · '+summary+(host?' '+host+permalink:''))}" target="_blank" rel="noopener">Kongsi di WhatsApp</a><button hidden id="copy" type="button">Salin pautan</button><input id="share-url" aria-label="Pautan untuk disalin" hidden readonly><span id="share-msg" role="status"></span></div></details></div></div></header>
 <main>
 <section class="cover" aria-labelledby="names"><div class="cover-in"><div class="front">
 <div class="corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="front-inner"><div class="crest">${blossom}</div><p class="kicker ruled">Walimatulurus</p>
-<h1 id="names">${wedding.couples.map(c=>`<span class="couple">${c.short[0]} <em>&amp;</em> ${c.short[1]}</span>`).join('<span class="serta">serta</span>')}</h1>
-<p class="front-date">${day}, ${date}</p><p class="front-town">${wedding.town}</p><a class="gold-btn" href="#jemputan">${icon('mail')}Buka jemputan</a></div></div>
-<div class="art"><img src="gerbang.webp" width="960" height="1200" fetchpriority="high" alt="Ilustrasi rumah kayu Melayu dengan pintu berukir, pohon palma dan bunga melur"></div></div></section>
+<h1 id="names" tabindex="-1">${wedding.couples.map(c=>`<span class="couple">${c.short[0]} <em>&amp;</em> ${c.short[1]}</span>`).join('<span class="serta">serta</span>')}</h1>
+<p class="front-date">${day}, ${date}</p><p class="front-town">${wedding.town}</p><a class="gold-btn" href="#jemputan">${icon('mail')}Baca jemputan</a></div></div>
+<div class="art"><img src="gerbang.webp" width="960" height="1200" fetchpriority="high" alt="Ilustrasi rumah kayu Melayu dengan pintu berukir, pohon palma dan bunga melur">${petals}</div></div></section>
 <section class="family" id="jemputan" tabindex="-1" aria-labelledby="salam"><p class="arabic" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p><h2 id="salam">Assalamualaikum <em>dan</em> salam sejahtera.</h2>
 <p>Dengan penuh kesyukuran ke hadrat Ilahi, kami</p><p class="host-names">${wedding.hosts[0]} <em>&amp;</em> ${wedding.hosts[1]}</p>
 <p class="invitation-text">dengan sukacitanya menjemput Dato’, Datin, tuan, puan, encik dan cik seisi keluarga untuk meraikan perkahwinan puteri dan putera kami bersama pasangan masing-masing.</p>
@@ -75,6 +94,6 @@ export async function buildSeriMelur() {
 <section id="butiran" class="details" aria-labelledby="majlis"><div class="section-wrap"><p class="kicker with-lines">${jewel} Waktu &amp; tempat ${jewel}</p><h2 id="majlis">Butiran majlis</h2>
 <div class="facts"><div>${lineIcon('calendar')}<h3>Tarikh</h3><strong>${date}</strong><p>${day}</p><a href="majlis.ics" download>Simpan ke kalendar</a></div><div>${lineIcon('time')}<h3>Masa</h3><strong>${clock(wedding.start)} – ${clock(wedding.end)}</strong><p>Waktu Malaysia</p></div><div>${lineIcon('location')}<h3>Lokasi</h3><strong>${wedding.venue}</strong><p>${wedding.address.join('<br>')}</p><a href="${maps}" target="_blank" rel="noopener">Buka Google Maps</a></div></div></div></section>
 <section id="kehadiran" class="rsvp" aria-labelledby="rsvp-title"><div class="section-wrap response"><div><p class="kicker">Maklum balas tetamu</p><h2 id="rsvp-title">Dapatkah anda hadir?</h2><p>Ini kad contoh. Pilihan anda hanya dipaparkan pada halaman ini.</p></div><form id="rsvp-form" hidden><fieldset><legend>Pilihan kehadiran</legend><label><input type="radio" name="attend" value="yes" required> Insya-Allah, hadir</label><label><input type="radio" name="attend" value="no"> Maaf, tidak dapat hadir</label></fieldset><label id="party" hidden>Bilangan tetamu <select name="guests">${[1,2,3,4,5,6].map(n=>`<option value="${n}">${n} orang</option>`).join('')}</select></label><button type="submit" class="green-btn">Pratonton jawapan</button><p id="result" role="status"></p></form><noscript>Aktifkan JavaScript untuk mencuba pratonton kehadiran.</noscript></div></section>
-</main><footer>${blossom}<p>Terima kasih atas doa dan ingatan.</p><span>Seri Melur · <a href="../../index.html#wedding-cards">Koleksi kad upskill.ai.my</a></span></footer>
+</main><footer>${blossom}<p>Terima kasih atas doa dan ingatan.</p><button type="button" class="replay" hidden>Ulang pembukaan kad</button><span>Seri Melur · <a href="../../index.html#wedding-cards">Koleksi kad upskill.ai.my</a></span></footer>
 </body></html>\n`);
 }

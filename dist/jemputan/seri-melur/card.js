@@ -44,3 +44,76 @@ form.addEventListener('submit', event => {
     ? 'Contoh jawapan anda: Insya-Allah, saya akan hadir. Bilangan tetamu: ' + form.elements.guests.value + ' orang.'
     : 'Contoh jawapan anda: Maaf, saya tidak dapat hadir. Selamat pengantin baharu!';
 });
+
+function enableCardOpening() {
+  const opening = document.querySelector('#opening');
+  if (typeof opening.showModal !== 'function') return;
+
+  const foldedCard = opening.querySelector('.folded-card');
+  const skip = opening.querySelector('.opening-skip');
+  const replay = document.querySelector('.replay');
+  const petals = document.querySelector('.petals');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let closeTimer;
+
+  function showCover() {
+    petals.classList.remove('drifting');
+    opening.showModal();
+    document.documentElement.classList.add('card-closed');
+  }
+
+  function revealInvitation(withPetals = false) {
+    if (!opening.open) return;
+    window.clearTimeout(closeTimer);
+    opening.close();
+    opening.classList.remove('is-opening');
+    document.documentElement.classList.remove('card-closed');
+    document.querySelector('#names').focus({preventScroll: true});
+    if (withPetals && !reducedMotion.matches) petals.classList.add('drifting');
+  }
+
+  function openFold() {
+    if (opening.classList.contains('is-opening')) return;
+    if (reducedMotion.matches) {
+      revealInvitation();
+      return;
+    }
+    opening.classList.add('is-opening');
+    // Embedded browsers can suppress animationend when the tab is backgrounded.
+    closeTimer = window.setTimeout(() => revealInvitation(true), 1300);
+  }
+
+  foldedCard.addEventListener('click', openFold);
+  opening.querySelector('.opening-mat').addEventListener('animationend', event => {
+    if (event.target === event.currentTarget && event.animationName === 'clear-mat') {
+      revealInvitation(true);
+    }
+  });
+  skip.addEventListener('click', () => revealInvitation());
+  opening.addEventListener('cancel', event => {
+    event.preventDefault();
+    revealInvitation();
+  });
+  reducedMotion.addEventListener?.('change', () => {
+    if (reducedMotion.matches && opening.classList.contains('is-opening')) revealInvitation();
+  });
+
+  replay.hidden = false;
+  replay.addEventListener('click', () => {
+    showCover();
+    window.scrollTo({top: 0, behavior: 'instant'});
+  });
+
+  if (!location.hash && window.scrollY === 0) showCover();
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('flourish');
+        observer.unobserve(entry.target);
+      }
+    }, {threshold: .25});
+    observer.observe(document.querySelector('.families'));
+  }
+}
+enableCardOpening();
