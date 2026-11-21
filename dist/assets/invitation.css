@@ -1,0 +1,24 @@
+.invite-page{--accent:#485a41;--tint:#e8e9d9;--gold:#ac9867;background:var(--tint);min-height:100vh}
+.invite-page[data-theme="double-happiness"]{--accent:#82352f;--tint:#f0ded6;--gold:#ad8347}
+.invite-page[data-theme="marigold"]{--accent:#8b481e;--tint:#f3e3c6;--gold:#ad802e}
+.invite-nav{background:var(--paper);padding:12px max(20px,5vw);display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);font-size:.92rem}
+.invite-nav>a{text-decoration:underline;text-underline-offset:4px}.invite-nav label{display:flex;gap:9px;align-items:center}
+.invite-nav select{appearance:none;padding:7px 34px 7px 10px;background:linear-gradient(45deg,transparent 50%,#505546 50%) calc(100% - 16px) 50% / 6px 6px no-repeat,linear-gradient(135deg,#505546 50%,transparent 50%) calc(100% - 10px) 50% / 6px 6px no-repeat,var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:4px;font-size:.9rem}
+.invite-page main{padding:40px 18px 60px}
+.invite-stage{position:relative;max-width:620px;margin:0 auto;background:#fffcf2;color:var(--accent);border:1px solid #cfc6ae;outline:1px solid var(--gold);outline-offset:-10px;text-align:center;box-shadow:0 10px 40px #4b40251a}
+.invite-cover{padding:42px 24px 24px}
+.ornament{font:4.5rem/1 var(--serif);color:var(--gold);margin:0 0 16px}
+.invite-kicker{font-size:.76rem;letter-spacing:.18em;font-weight:650;text-transform:uppercase}
+.invite-cover h1{font:500 clamp(2.8rem,6.8vw,4.8rem)/1.06 var(--serif);letter-spacing:-.065em;margin:20px auto;max-width:490px}
+.invite-cover em{font-weight:400;color:var(--gold)}
+.invite-date{font-family:var(--serif);font-size:1.28rem}.little-rule{width:55px;height:1px;background:var(--gold);margin:23px auto}
+.invite-stage button{border:1px solid var(--accent);background:var(--accent);color:white;border-radius:4px;padding:10px 21px;font-size:.95rem}
+.invite-stage button:hover{filter:brightness(.9)}
+.demo-credit,.demo-note{font-size:.87rem;line-height:1.5}.demo-credit{margin:12px 0 28px;color:#696754}
+#guest-page{padding:22px 8.5% 10px;outline:0}#guest-page h2{font-size:2.6rem;line-height:1.1;margin:8px 0 15px}
+.invite-block{border-top:1px solid #d9d0b8;padding-top:23px;margin-top:26px}
+.invite-block h3{font-size:1.8rem;line-height:1.15;margin:10px 0}
+#schedule{list-style:none;text-align:left;margin:22px 0;padding:0}#schedule li{padding:7px 0;display:flex;gap:16px;border-bottom:1px solid #e7e1d5}#schedule time{min-width:72px;font-weight:650}
+.invite-link{text-decoration:underline;text-underline-offset:4px}
+#rsvp fieldset{border:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:14px 0}#rsvp-result:not(:empty){margin:14px 0 0;font-weight:600}
+@media(max-width:440px){.invite-nav{font-size:.82rem;padding:10px 12px}.invite-nav label{gap:5px}.invite-nav select{max-width:127px;font-size:.83rem}.invite-page main{padding-top:22px}.invite-cover{padding-top:28px}#guest-page{padding-inline:7%}}
