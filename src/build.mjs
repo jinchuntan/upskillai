@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { products, categories } from './catalog.mjs';
 import { icon, flower } from './icons.mjs';
+import { buildSeriMelur } from './invitations/seri-melur.mjs';
 
 const out = new URL('../dist/', import.meta.url);
 const write = (path, text) => writeFile(new URL(path, out), text);
@@ -23,7 +24,7 @@ function card(p){
   return `<article class="card" data-group="${p.category}" data-id="${p.id}">
 <div class="card-visual"><a href="${url}" aria-label="Explore ${p.title}"><img src="assets/${p.id}.webp" alt="" width="508" height="508" loading="lazy"></a><span class="image-tag ${p.category}">${icon(primary[p.category])}${categoryName[p.category]}</span>${saveBtn(p)}</div>
 <div class="card-copy"><div class="product-meta">${p.tier?p.tier+' edition':p.invitation?'Invitation collection':'With Nigel Tan'}</div><h3><a href="${url}">${p.title}</a></h3><p>${p.description}</p>
-<div class="card-bottom"><span>${p.price===0?'PDF download':p.price?(p.checkoutUrl?'Ebook price':'Planned price'):p.invitation?'Interactive preview':p.bookingUrl?'Enrolment open':'Coming soon'}</span><a href="${url}" class="price ${p.price===0?'free':''}">${price(p)}</a></div></div></article>`;
+<div class="card-bottom"><span>${p.price===0?'PDF download':p.price?(p.checkoutUrl?'Ebook price':'Planned price'):p.invitation?'Interactive preview':p.bookingUrl?'Enrolment open':'Coming soon'}</span><a href="${p.samplePath || url}" class="price ${p.price===0?'free':''}">${price(p)}</a></div></div></article>`;
 }
 const filters=Object.entries(categories).map(([id,name])=>`<a class="filter${id==='all'?' active':''}" href="#${id==='all'?'shop':id}" data-filter="${id}" ${id==='all'?'aria-current="true"':''}>${icon(primary[id])}${name}</a>`).join('');
 const home = head('The studio shop','Practical AI ebooks, digital wedding invitations and beginner-friendly classes from an independent Malaysian studio.','')+nav('',true)+`
@@ -49,7 +50,7 @@ for(const p of products) {
   if(merchantUrl && new URL(merchantUrl).protocol!=='https:') throw new Error('Merchant links must use HTTPS');
   const category=categories[p.category];
   const action=p.download?`<a class="btn primary" href="../${p.download}" download>${icon('download')}Download free ebook</a>`:
-   p.invitation?`<a class="btn primary" href="../invitation.html">${icon('mail')}Open sample invitation</a>`:p.bookingUrl?`<a class="btn primary" href="${p.bookingUrl}">${icon('video')}Book this class</a>`:p.checkoutUrl?`<a class="btn primary" href="${p.checkoutUrl}">${icon('bag')}Buy for RM${p.price}</a>`:
+   p.invitation?`<a class="btn primary" href="../${p.samplePath || 'invitation.html'}">${icon('mail')}Open sample invitation</a>`:p.bookingUrl?`<a class="btn primary" href="${p.bookingUrl}">${icon('video')}Book this class</a>`:p.checkoutUrl?`<a class="btn primary" href="${p.checkoutUrl}">${icon('bag')}Buy for RM${p.price}</a>`:
    `<a class="btn primary" href="#sample">${icon(p.category==='classes'?'video':'book')}${p.category==='classes'?'Try a class exercise':'Read a sample'}</a>`;
   await write('products/'+p.id+'.html',head(p.title,p.description,'../')+nav('../')+`<main class="wrap product-page" id="main">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#shop">Shop</a><span>/</span><a href="../index.html#${p.category}">${category}</a><span>/</span><span aria-current="page">${p.title}</span></nav>
@@ -59,3 +60,5 @@ for(const p of products) {
   ${p.excerpt?`<section id="sample" class="sample"><p class="eyebrow">${p.category==='classes'?'Class notebook':'From the pages'}</p><h2>${p.excerptTitle}</h2><p>${p.excerpt}</p></section>`:''}<a class="text-link" href="../index.html#${p.category}">Browse ${category.toLowerCase()}</a></main>`+footer('../')+end);
 }
 await write('assets/flower.svg','<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" color="#ae4b2e">'+flower.replace(/^<svg[^>]+>|<\/svg>$/g,'')+'</svg>');
+
+await buildSeriMelur();

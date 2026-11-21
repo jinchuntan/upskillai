@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//upskill.ai.my//Seri Melur//MS
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:seri-melur-demo-20261219@upskill.ai.my
+DTSTAMP:20261121T000000Z
+DTSTART:20261219T030000Z
+DTEND:20261219T080000Z
+SUMMARY:Contoh majlis perkahwinan - Alya & Hakim serta Irfan & Maisara
+LOCATION:Alida Wedding Hall\,
+  Lot 21568\, Jalan Pintasan Muar\, Jalan Ismail\, 84000 Muar\, Johor
+DESCRIPTION:Acara contoh untuk pratonton kad Seri Melur.
+END:VEVENT
+END:VCALENDAR

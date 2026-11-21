@@ -21,3 +21,9 @@ The free ebook is downloadable. The Essentials and Premium products show provisi
 Classes currently show outlines and warm-up exercises. When enrolment opens, update the label and dates in the catalogue, set the class’s HTTPS `bookingUrl`, and rebuild. The wedding card is an interactive demonstration with three styles, fictional events and a calendar download. Sample RSVPs stay in the open page. Saved shop items are stored in the visitor's browser.
 
 Deploy the contents of `dist/` to a static host. To use the proposed `upskill.ai.my` domain, configure the domain in the chosen host and apply its DNS records with the domain owner.
+
+## Seri Melur wedding e-card
+
+Share `/jemputan/seri-melur/` for the standalone guest experience, or open **Wedding cards → Seri Melur** in the shop. The sample uses fictional families. Its RSVP previews a reply in the page and does not send guest data.
+
+Edit the event and Malay invitation text in `src/invitations/seri-melur.mjs`. Run `npm run build` to regenerate the HTML and calendar together. The card's styles, interaction code and original illustration live in `dist/jemputan/seri-melur/`.

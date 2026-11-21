@@ -11,12 +11,12 @@ export const products = [
     download: 'downloads/everyday-ai.pdf'
   },
   {
-    id: 'botanical', category: 'wedding-cards', title: 'The Garden Invitation',
-    description: 'Open a botanical wedding card and try the invitation as a guest.',
-    label: 'Interactive sample', detail: 'Digital invitation · 3 sample styles',
-    intro: 'Open the envelope to see how a digital invitation feels on a phone. Browse three sample celebrations, read the programme, and try the guest reply.',
-    topics: ['Garden, Double Happiness, and Marigold styles', 'A ceremony programme and a calendar download', 'A sample RSVP you can try on this device'],
-    invitation: true
+    id: 'seri-melur', category: 'wedding-cards', title: 'Seri Melur',
+    description: 'A Malay wedding invitation for two couples, framed in deep green and antique gold.',
+    label: 'Malay wedding invitation', detail: 'Digital invitation · Bahasa Melayu',
+    intro: 'Open an original Malay wedding e-card, illustrated with a carved timber doorway and jasmine. Read the family invitation, find the hall in Muar, or try a guest reply.',
+    topics: ['A full invitation for two couples in Bahasa Melayu', 'Event details, Google Maps directions, and a calendar file', 'A shareable guest link and a sample RSVP'],
+    invitation: true, samplePath: 'jemputan/seri-melur/'
   },
   {
     id: 'video-class', category: 'classes', title: 'Make Your First AI Video',
@@ -57,6 +57,14 @@ export const products = [
     excerptTitle: 'A warm-up before class',
     excerpt: 'Choose a paragraph from a published annual report that describes what the company sells. Ask an AI tool to explain it in three sentences. Next to each sentence, copy the phrase from the report that supports it. Set aside any claim you cannot trace.',
     status: 'Dates and enrolment will be announced here.', bookingUrl: ''
+  },
+  {
+    id: 'botanical', category: 'wedding-cards', title: 'The Garden Invitation',
+    description: 'Open a botanical wedding card and try the invitation as a guest.',
+    label: 'Interactive sample', detail: 'Digital invitation · 3 sample styles',
+    intro: 'Open the envelope to see how a digital invitation feels on a phone. Browse three sample celebrations, read the programme, and try the guest reply.',
+    topics: ['Garden, Double Happiness, and Marigold styles', 'A ceremony programme and a calendar download', 'A sample RSVP you can try on this device'],
+    invitation: true
   }
 ];
 
