@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//upskill.ai.my//Wedding samples//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:malli-sample-2026@upskill.ai.my
+DTSTAMP:20261121T000000Z
+DTSTART:20261220T013000Z
+DTEND:20261220T060000Z
+SUMMARY:Sample wedding - Arjun & Kavya
+LOCATION:The Majestic Hotel Kuala Lumpur\, 5\, Jalan Sultan Hishamuddin\, 5
+ 0000 Kuala Lumpur\, Malaysia
+DESCRIPTION:Sample invitation only. This is a fictional wedding event.
+END:VEVENT
+END:VCALENDAR

@@ -19,6 +19,22 @@ export const products = [
     invitation: true, samplePath: 'jemputan/seri-melur/'
   },
   {
+    id: 'double-happiness', category: 'wedding-cards', title: 'Double Happiness',
+    description: 'A Chinese wedding invitation with peonies, red lanterns, and a golden tea setting.',
+    label: 'Chinese wedding invitation', detail: 'Digital invitation · English with Chinese greetings',
+    intro: 'Open a red envelope to step into Wei Jun and Hui Min’s illustrated wedding invitation. Explore the tea ceremony and dinner programme, save the date, and try a guest reply.',
+    topics: ['An animated red envelope with a double happiness seal', 'Tea ceremony and wedding dinner details, directions, and calendar download', 'A separate guest link with sharing and a sample RSVP'],
+    invitation: true, samplePath: 'jemputan/double-happiness/'
+  },
+  {
+    id: 'malli', category: 'wedding-cards', title: 'Malli',
+    description: 'A Tamil Hindu wedding invitation with jasmine, marigolds, and a courtyard mandap.',
+    label: 'Tamil Hindu wedding invitation', detail: 'Digital invitation · English with Tamil greetings',
+    intro: 'Open a floral invitation to Arjun and Kavya’s sample wedding. Follow the ceremony and lunch programme, find the venue, and try the guest reply.',
+    topics: ['A floral card opening with plum and antique gold details', 'Ceremony and lunch programme, directions, and calendar download', 'A separate guest link with sharing and a sample RSVP'],
+    invitation: true, samplePath: 'jemputan/malli/'
+  },
+  {
     id: 'video-class', category: 'classes', title: 'Make Your First AI Video',
     description: 'Go from a scribbled idea to a short video, one shot at a time.',
     label: 'Upcoming class', detail: 'Beginner class · Taught by Nigel Tan',

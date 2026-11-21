@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//upskill.ai.my//Wedding samples//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:double-happiness-sample-2026@upskill.ai.my
+DTSTAMP:20261121T000000Z
+DTSTART:20261212T093000Z
+DTEND:20261212T140000Z
+SUMMARY:Sample wedding - Wei Jun & Hui Min
+LOCATION:Eastern & Oriental Hotel\, George Town\, Penang\, Malaysia
+DESCRIPTION:Sample invitation only. This is a fictional wedding event.
+END:VEVENT
+END:VCALENDAR

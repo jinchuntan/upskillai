@@ -2,6 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { products, categories } from './catalog.mjs';
 import { icon, flower } from './icons.mjs';
 import { buildSeriMelur } from './invitations/seri-melur.mjs';
+import { buildCelebrations } from './invitations/celebrations.mjs';
 
 const out = new URL('../dist/', import.meta.url);
 const write = (path, text) => writeFile(new URL(path, out), text);
@@ -62,3 +63,4 @@ for(const p of products) {
 await write('assets/flower.svg','<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" color="#ae4b2e">'+flower.replace(/^<svg[^>]+>|<\/svg>$/g,'')+'</svg>');
 
 await buildSeriMelur();
+await buildCelebrations();
