@@ -1,0 +1,9 @@
+Seri Melur, Double Happiness and Malli invitation music
+
+The original musical scores in src/invitations/render_music.py and the three
+rendered music.mp3 recordings are dedicated to the public domain under CC0 1.0
+Universal. They may be used, shared and adapted, including commercially,
+without attribution. No third-party compositions, samples or recordings were used.
+
+CC0 terms: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+This dedication applies only to the music.

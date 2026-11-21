@@ -1,3 +1,4 @@
+import { musicAssets, musicAudio, musicButton } from './music.mjs';
 import { mkdir, writeFile } from 'node:fs/promises';
 
 // All people and wedding arrangements in these invitation samples are fictional.
@@ -136,11 +137,12 @@ ${origin ? `<meta property="og:url" content="${origin}${path}">` : ''}
 <link rel="icon" href="../../assets/flower.svg">
 <link rel="preload" href="../../assets/serif.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="../assets/celebration.css"><script src="../assets/celebration.js" defer></script>
-</head><body class="${wedding.theme}" id="top">
+${musicAssets}</head><body class="${wedding.theme}" id="top">
 <a class="skip-content" href="#invitation">Skip to invitation</a>
 <dialog class="opening" aria-label="${escape(wedding.collection)} invitation cover" aria-describedby="cover-description">
   <p id="cover-description" class="visually-hidden">${names.join(' and ')}. ${date}. ${escape(wedding.city)}. Activate the card to open the invitation.</p>
   <div class="opening-stage">
+    ${musicButton('en', 'cover')}
     <button class="skip-opening" type="button">Skip opening</button>
     <div class="stationery">
       <p class="collection-name">${escape(wedding.collection)}</p>
@@ -210,6 +212,7 @@ ${origin ? `<meta property="og:url" content="${origin}${path}">` : ''}
 <footer><p class="footer-symbol" aria-hidden="true">${stamp}</p><p class="footer-message">${wedding.footer}</p><p>${names.join(' &amp; ')} · ${date}</p>
 <button class="replay" type="button" hidden>Replay card opening</button><a href="../../index.html#wedding-cards">Wedding cards by upskill.ai.my</a></footer>
 <nav class="mobile-menu" aria-label="Quick links"><a href="#celebration">The day</a><a href="#venue">Directions</a><a href="#rsvp">RSVP</a></nav>
+${musicAudio}${musicButton('en', 'page')}
 </body></html>\n`;
 }
 

@@ -1,0 +1,43 @@
+.music-control {
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45em;
+  min-height: 44px;
+  padding: .45rem .85rem;
+  border-radius: 2rem;
+  border: 1px solid #c3a36c;
+  background: var(--accent, var(--jade, #193d33));
+  color: #fff4d9;
+  font: 550 .875rem/1.2 var(--sans, sans-serif);
+  cursor: pointer;
+}
+.music-control[hidden] { display: none; }
+.music-control [aria-hidden] { color: #f1d195; font-size: 1.15em; }
+.music-cover { position: absolute; top: max(18px, env(safe-area-inset-top)); left: max(22px, env(safe-area-inset-left)); }
+.music-page { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); box-shadow: 0 2px 8px #35250e26; }
+.music-control:focus-visible { outline: 3px solid #deb36b; outline-offset: 3px; }
+.music-feedback:not(:empty) { position: fixed; bottom: 7.8rem; right: 1rem; padding: .5rem .8rem; z-index: 14; background: #fff8eb; color: #442c25; }
+@media (max-width:700px) {
+  .mobile-menu ~ .music-page { bottom: calc(61px + env(safe-area-inset-bottom)); }
+  .music-cover { top: max(13px, env(safe-area-inset-top)); left: 17px; }
+}
+@media (max-height:500px) and (orientation:landscape) {
+  .music-cover { left: 16px; top: 14px; }
+}
+@media (prefers-reduced-motion:no-preference) {
+  .opening[open]:not(.is-opening) .wax .blossom { animation: jasmine-nod 3.6s ease-in-out 1; }
+  .chinese .opening[open]:not(.is-opening) .seal { overflow: hidden; }
+  .chinese .opening[open]:not(.is-opening) .seal::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(110deg,transparent 35%,#fff2bc70 50%,transparent 65%);
+    animation: gold-light 2.8s ease-in-out 1 both;
+  }
+  .indian .opening[open]:not(.is-opening) .envelope-flap { animation: garland-sway 3.6s ease-in-out 1; }
+  @keyframes jasmine-nod { 0%,100% { transform: rotate(0); } 40% { transform: rotate(-8deg); } 75% { transform: rotate(3deg); } }
+  @keyframes gold-light { 0%,18% { transform: translateX(-110%); } 85%,100% { transform: translateX(110%); } }
+  @keyframes garland-sway { 0%,100% { transform: rotate(0); } 35% { transform: rotate(1.6deg); } 70% { transform: rotate(-.8deg); } }
+}
+
+html:is(.card-closed, .cover-closed) .music-page { display: none; }

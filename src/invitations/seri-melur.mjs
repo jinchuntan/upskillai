@@ -1,3 +1,4 @@
+import { musicAssets, musicAudio, musicButton } from './music.mjs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { icon } from '../icons.mjs';
 
@@ -60,11 +61,12 @@ export async function buildSeriMelur() {
 <meta name="theme-color" content="#183e34"><meta property="og:locale" content="ms_MY"><meta property="og:type" content="website">
 <meta property="og:title" content="Seri Melur · ${summary}"><meta property="og:description" content="Contoh jemputan walimatulurus · ${datesAndPlace}.">
 <meta property="og:image" content="${host}${permalink}gerbang.webp">${host?`<meta property="og:url" content="${host}${permalink}">`:''}
-<link rel="icon" href="../../assets/flower.svg"><link rel="stylesheet" href="card.css"><link rel="preload" as="font" crossorigin href="../../assets/serif.woff" type="font/woff"><script src="card.js" defer></script></head>
+<link rel="icon" href="../../assets/flower.svg"><link rel="stylesheet" href="card.css"><link rel="preload" as="font" crossorigin href="../../assets/serif.woff" type="font/woff"><script src="card.js" defer></script>${musicAssets}</head>
 <body id="atas"><a class="skip" href="#jemputan">Terus ke jemputan</a>
 <dialog class="opening" id="opening" aria-label="Sampul jemputan Seri Melur" aria-describedby="opening-description">
   <p id="opening-description" hidden>${summary}. ${datesAndPlace}.</p>
   <div class="opening-mat">
+    ${musicButton('ms', 'cover')}
     <button type="button" class="opening-skip">Langkau <span aria-hidden="true">↗</span></button>
     <div class="opening-stationery">
       <p class="opening-title">${blossom}<span>Seri Melur</span></p>
@@ -95,5 +97,6 @@ export async function buildSeriMelur() {
 <div class="facts"><div>${lineIcon('calendar')}<h3>Tarikh</h3><strong>${date}</strong><p>${day}</p><a href="majlis.ics" download>Simpan ke kalendar</a></div><div>${lineIcon('time')}<h3>Masa</h3><strong>${clock(wedding.start)} – ${clock(wedding.end)}</strong><p>Waktu Malaysia</p></div><div>${lineIcon('location')}<h3>Lokasi</h3><strong>${wedding.venue}</strong><p>${wedding.address.join('<br>')}</p><a href="${maps}" target="_blank" rel="noopener">Buka Google Maps</a></div></div></div></section>
 <section id="kehadiran" class="rsvp" aria-labelledby="rsvp-title"><div class="section-wrap response"><div><p class="kicker">Maklum balas tetamu</p><h2 id="rsvp-title">Dapatkah anda hadir?</h2><p>Ini kad contoh. Pilihan anda hanya dipaparkan pada halaman ini.</p></div><form id="rsvp-form" hidden><fieldset><legend>Pilihan kehadiran</legend><label><input type="radio" name="attend" value="yes" required> Insya-Allah, hadir</label><label><input type="radio" name="attend" value="no"> Maaf, tidak dapat hadir</label></fieldset><label id="party" hidden>Bilangan tetamu <select name="guests">${[1,2,3,4,5,6].map(n=>`<option value="${n}">${n} orang</option>`).join('')}</select></label><button type="submit" class="green-btn">Pratonton jawapan</button><p id="result" role="status"></p></form><noscript>Aktifkan JavaScript untuk mencuba pratonton kehadiran.</noscript></div></section>
 </main><footer>${blossom}<p>Terima kasih atas doa dan ingatan.</p><button type="button" class="replay" hidden>Ulang pembukaan kad</button><span>Seri Melur · <a href="../../index.html#wedding-cards">Koleksi kad upskill.ai.my</a></span></footer>
+${musicAudio}${musicButton('ms', 'page')}
 </body></html>\n`);
 }

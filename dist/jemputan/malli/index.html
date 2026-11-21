@@ -12,11 +12,12 @@
 <link rel="icon" href="../../assets/flower.svg">
 <link rel="preload" href="../../assets/serif.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="../assets/celebration.css"><script src="../assets/celebration.js" defer></script>
-</head><body class="indian" id="top">
+<link rel="stylesheet" href="../assets/music.css"><script src="../assets/music.js" defer></script></head><body class="indian" id="top">
 <a class="skip-content" href="#invitation">Skip to invitation</a>
 <dialog class="opening" aria-label="Malli invitation cover" aria-describedby="cover-description">
   <p id="cover-description" class="visually-hidden">Arjun and Kavya. 20 December 2026. Kuala Lumpur. Activate the card to open the invitation.</p>
   <div class="opening-stage">
+    <button type="button" class="music-control music-cover" data-play="Play music" data-pause="Pause music" hidden><span aria-hidden="true">♫</span> <span data-label>Play music</span></button><span class="music-feedback" role="status"></span>
     <button class="skip-opening" type="button">Skip opening</button>
     <div class="stationery">
       <p class="collection-name">Malli</p>
@@ -86,4 +87,5 @@
 <footer><p class="footer-symbol" aria-hidden="true"><span class="flower-stamp" aria-hidden="true">✺</span></p><p class="footer-message">Come with love. Leave with memories.</p><p>Arjun &amp; Kavya · 20 December 2026</p>
 <button class="replay" type="button" hidden>Replay card opening</button><a href="../../index.html#wedding-cards">Wedding cards by upskill.ai.my</a></footer>
 <nav class="mobile-menu" aria-label="Quick links"><a href="#celebration">The day</a><a href="#venue">Directions</a><a href="#rsvp">RSVP</a></nav>
+<audio id="wedding-music" preload="none" loop src="music.mp3"></audio><button type="button" class="music-control music-page" data-play="Play music" data-pause="Pause music" hidden><span aria-hidden="true">♫</span> <span data-label>Play music</span></button><span class="music-feedback" role="status"></span>
 </body></html>
